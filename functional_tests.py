@@ -41,7 +41,10 @@ class NewVisitorTest(unittest.TestCase):
 
         # She is invited to enter a to-do item straight away
         inputbox = self.browser.find_element(By.ID, 'id_new_item')  # Selenium update
-        self.assertEqual(inputbox.get_attribute('placeholder'), 'Enter a to-do item')
+        self.assertEqual(
+            inputbox.get_attribute('placeholder'), 
+            'Enter a to-do item'
+        )
         
 
         # She types "Buy peacock feather" into a text box.
@@ -54,13 +57,12 @@ class NewVisitorTest(unittest.TestCase):
         inputbox.send_keys(Keys.ENTER)
         time.sleep(1)
         
+#        self.check_for_row_in_list_table('1: Buy peacock feathers')
+        
         table = self.browser.find_element(
             By.ID, 'id_list_table')  # Selenium update
         rows = table.find_elements(By.TAG_NAME, 'tr')  # Selenium update
-        self.assertTrue(
-            any(row.next=='1: Buy peacock feathers' for row in rows),
-            "New to-do item did not appear in table"
-        )
+        self.assertIn('1: Buy peacock feathers', [row.text for row in rows])
         
         # There is still a text box inviting her to add another item.
         # She enters "Use peacock feathers tto make a fly" (Edith is very methodical.)
