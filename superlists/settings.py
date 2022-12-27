@@ -73,6 +73,7 @@ WSGI_APPLICATION = 'superlists.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
+# Differs from example p. 147
 
 DATABASES = {
     'default': {
