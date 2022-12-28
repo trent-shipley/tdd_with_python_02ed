@@ -1,0 +1,3 @@
+2022-12-28
+
+Yesterday, I found a difference, in a configuration for the database in chapter 5.
