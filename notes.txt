@@ -1,3 +1,13 @@
 2022-12-28
 
 Yesterday, I found a difference, in a configuration for the database in chapter 5.
+
+
+2022-12-30
+
+created this
+
+def set_up_browser():
+    return webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
+
+in fuctiional_tests/tests.py
