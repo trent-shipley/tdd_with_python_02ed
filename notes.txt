@@ -10,4 +10,7 @@ created this
 def set_up_browser():
     return webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
 
-in fuctiional_tests/tests.py
+in functional_tests/tests.py
+
+2023-01-09
+use re_path instead of url, which does not seem to be in current django docs.
