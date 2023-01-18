@@ -14,3 +14,6 @@ in functional_tests/tests.py
 
 2023-01-09
 use re_path instead of url, which does not seem to be in current django docs.
+
+2023-01-13
+models.ForiegnKey now requires specifying on_delete behavior.
