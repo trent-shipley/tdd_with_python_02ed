@@ -17,3 +17,7 @@ use re_path instead of url, which does not seem to be in current django docs.
 
 2023-01-13
 models.ForiegnKey now requires specifying on_delete behavior.
+
+2023-01-18
+# from django.conf.urls import url # removed as of django 4.0+
+Also "include"  moved to django.urls
