@@ -27,7 +27,8 @@ wget command didn't work.  Got a 404.  Found with Google and downloaded "manuall
 
 2023-01-24
 Downloaded a bad copy.  Spent day debugging failure to pass test of centeredness.  Kept minor alteration to test_layout_and_styling.
-Changed layout slightly as prescribed layout would not pass
+Changed layout slightly as prescribed layout would not pass.
+<div class="col-md-12 col-md-offset-6">
 
 
 
