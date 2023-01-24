@@ -1,8 +1,6 @@
-from django.test import LiveServerTestCase
-# from typing import Self
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.by import By  # Change in Ch4 
-# from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.firefox.service import Service as FirefoxService
 from selenium.common.exceptions import WebDriverException
 from webdriver_manager.firefox import GeckoDriverManager
@@ -17,10 +15,7 @@ def set_up_browser():
     return webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
 
 
-class NewVisitorTest(LiveServerTestCase):
-    # def setUp(self):
-    #     self.browser = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
-
+class NewVisitorTest(StaticLiveServerTestCase):
     def setUp(self):
         self.browser = set_up_browser()
 
@@ -41,15 +36,18 @@ class NewVisitorTest(LiveServerTestCase):
                 time.sleep(0.5)
 
     def test_layout_and_styling(self):
+        # self.browser.maximize_window()
         # Edith goes to the home page
         self.browser.get(self.live_server_url)
         self.browser.set_window_size(1024, 768)
+        window_size = self.browser.get_window_size()
+        window_half_width = window_size['width'] / 2
 
         # She notices the input box is nicely centered
         inputbox = self.browser.find_element(By.ID, 'id_new_item')
         self.assertAlmostEqual(
             inputbox.location['x'] + inputbox.size['width'] / 2,
-            512,
+            window_half_width,
             delta=10
         )
 
@@ -61,7 +59,7 @@ class NewVisitorTest(LiveServerTestCase):
         inputbox = self.browser.find_element(By.ID, 'id_new_item')
         self.assertAlmostEqual(
             inputbox.location['x'] + inputbox.size['width'] / 2,
-            512,
+            window_half_width,
             delta=10
         )
 
@@ -113,7 +111,7 @@ class NewVisitorTest(LiveServerTestCase):
         self.wait_for_row_in_list_table('2: Use peacock feathers to make a fly')
         self.wait_for_row_in_list_table('1: Buy peacock feathers')
 
-        self.fail('Finish the test!')
+        # self.fail('Finish the test!')
         # Edith wonders whether the site will remember her list.
         # Then she sees that the site has generated a unique URL for her --
         # there is some explanatory text to that effect.
