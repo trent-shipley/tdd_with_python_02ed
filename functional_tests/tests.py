@@ -14,7 +14,7 @@ MAX_WAIT = 10
 
 def set_up_browser():
     return webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
-
+    # return webdriver.Firefox()
 
 class NewVisitorTest(StaticLiveServerTestCase):
     def setUp(self):
