@@ -1,3 +1,4 @@
+import os
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.by import By  # Change in Ch4 
@@ -18,6 +19,9 @@ def set_up_browser():
 class NewVisitorTest(StaticLiveServerTestCase):
     def setUp(self):
         self.browser = set_up_browser()
+        staging_server = os.environ.get('STAGING_SERVER')
+        if staging_server:
+            self.live_server_url ='http://' + staging_server
 
     def tearDown(self):
         self.browser.quit()
@@ -167,6 +171,8 @@ class NewVisitorTest(StaticLiveServerTestCase):
         self.assertIn('Buy milk', page_text)
 
         # Satisfied they both go back to sleep.
+
+
 
 
 if __name__ == '__main__':

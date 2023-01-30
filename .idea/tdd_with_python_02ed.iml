@@ -14,7 +14,7 @@
   </component>
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$" />
-    <orderEntry type="jdk" jdkName="tdd_with_python_02ed" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="$USER_HOME$/mambaforge/envs/tdd_with_python_02ed" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="PyDocumentationSettings">
