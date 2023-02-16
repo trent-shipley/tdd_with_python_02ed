@@ -13,15 +13,16 @@ MAX_WAIT = 10
 
 
 def set_up_browser():
-    return webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
-    # return webdriver.Firefox()
+    # return webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
+    return webdriver.Firefox()
+
 
 class NewVisitorTest(StaticLiveServerTestCase):
     def setUp(self):
         self.browser = set_up_browser()
         staging_server = os.environ.get('STAGING_SERVER')
         if staging_server:
-            self.live_server_url ='http://' + staging_server
+            self.live_server_url = 'http://' + staging_server
 
     def tearDown(self):
         self.browser.quit()
@@ -141,8 +142,8 @@ class NewVisitorTest(StaticLiveServerTestCase):
 
         # Now a new user, Francis, comes along to the site.
 
-        ## We use a new browser session to make sure that no information
-        ## of Edith's is comming through from cookies, etc.
+        # We use a new browser session to make sure that no information
+        # of Edith's is comming through from cookies, etc.
         self.browser.quit()
         self.browser = set_up_browser()
 
@@ -171,8 +172,6 @@ class NewVisitorTest(StaticLiveServerTestCase):
         self.assertIn('Buy milk', page_text)
 
         # Satisfied they both go back to sleep.
-
-
 
 
 if __name__ == '__main__':
